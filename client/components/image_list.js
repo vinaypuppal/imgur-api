@@ -22,7 +22,7 @@ const ImageList = ()=>{
   });
 
   return (
-    <ul>
+    <ul className='image-list'>
       {renderedImages}
     </ul>
   );
