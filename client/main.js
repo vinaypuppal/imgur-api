@@ -13,6 +13,9 @@ const App = ()=>{
     <div>
       <h1>Imgur API</h1>
       <ImageList />
+      <footer>
+        <p>Made with &hearts; By VinayPuppal</p>
+      </footer>
     </div>
   );
 }
