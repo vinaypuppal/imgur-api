@@ -4,10 +4,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//import components
+import ImageList from './components/image_list';
+
 //craete a App component
 const App = ()=>{
   return(
-    <h1>React App #1</h1>
+    <div>
+      <h1>Imgur API</h1>
+      <ImageList />
+    </div>
   );
 }
 
