@@ -18,7 +18,7 @@ const IMAGES = [
 //Create component
 const ImageList = ()=>{
   const renderedImages = IMAGES.map((image)=>{
-    return <ImageDetail />
+    return <ImageDetail image={image} key={image.title}/>
   });
 
   return (

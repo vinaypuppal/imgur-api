@@ -6,9 +6,13 @@
 import React from 'react';
 
 //Create component
-const ImageDetail = ()=>{
+const ImageDetail = (props)=>{
+  const {title,link} = props.image;
   return (
-    <li>ImageDetail</li>
+    <li>
+      <img src={link} />
+      {title}
+    </li>
   );
 }
 
