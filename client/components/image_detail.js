@@ -7,20 +7,18 @@ import React from 'react';
 
 //Create component
 const ImageDetail = (props)=>{
-  const {title,link} = props.image;
+  const {title,link,ups,downs,type} = props.image;
+  const imgLink = type ? link : 'http://dummyimage.com/400x400/ccc/fff.png&text=no+img'
   return (
     <li className='image-detail'>
       <div className='image'>
-        <img src={link} alt={title} />
+        <img src={imgLink} alt={title} />
       </div>
       <div className='details'>
         <h1>{title}</h1>
-        <p className='no-desc'>
-          No Description
-        </p>
         <div className='meta'>
-          <span>&hearts; Upvotes</span>
-          <span>&#9785; Downvotes</span>
+          <span>&hearts; {ups}</span>
+          <span>&#9785; {downs}</span>
         </div>
       </div>
     </li>

@@ -3,7 +3,10 @@
 **/
 
 //Import react library
-import React from 'react';
+import React,{ Component } from 'react';
+
+//Import axios library
+import axios from 'axios';
 
 //Import custom components
 import ImageDetail from './image_detail';
@@ -16,16 +19,41 @@ const IMAGES = [
 ]
 
 //Create component
-const ImageList = ()=>{
-  const renderedImages = IMAGES.map((image)=>{
-    return <ImageDetail image={image} key={image.title}/>
-  });
-
-  return (
-    <ul className='image-list'>
-      {renderedImages}
-    </ul>
-  );
+class ImageList extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      images:[],
+      loading: true
+    }
+  }
+  componentWillMount(){
+    axios.get('https://api.imgur.com/3/gallery/random/random/0')
+      .then(({data})=>{
+        console.log(data.data);
+        this.setState({
+          images:data.data,
+          loading: false
+        });
+      });
+  }
+  renderedImages(){
+    return this.state.images.map((image)=>{
+      return <ImageDetail image={image} key={image.title}/>
+    });
+  }
+  render(){
+    if(this.state.loading){
+      return(
+        <h1>Loading.....</h1>
+      );
+    }
+    return (
+      <ul className='image-list'>
+        {this.renderedImages()}
+      </ul>
+    );
+  }
 }
 
 //Export component
